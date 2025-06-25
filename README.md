@@ -56,7 +56,77 @@ In this case
   <img alt="Screenshot 2025-06-24 at 11 45 27 AM" src="https://github.com/user-attachments/assets/f89958fb-1658-48db-a623-fec0faf17e9e" height="80%" width="80%" />
 </p>
 <br />
-<p>Next, we're going to log in to dc-1 and disable firewall configurations. In a real world scenario this is not recommended, but for the sake of this tutorial we need to do this. </p>
+<p>Next, we're going to log in to dc-1 and disable firewall configurations. In a real world scenario this is not recommended, but for the sake of this tutorial we need to do this. Go into the dc-1 in Azure and get dc-1's public IP address and connect to it via either Remote Desktop (Windows) or Microsoft Remote Desktop (Mac).</p>
+<br />
+<p>Once in dc-1, if you configured dc-1 exactly as this tutorial recommended, your main page should've opened Server Manager like this:</p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 03 15 AM" src="https://github.com/user-attachments/assets/e576dfa4-1a9c-45a3-a49c-97171f57ea70" height="80%" width="80%"/>
+</p>
+<br />
+<p>Now, right-click the start menu (Windows icon) in the bottom left and select "Run", a small window should open up. Type "wf.msc" to open Windows Defender Firewall with Advanced Security.</p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 06 16 AM" src="https://github.com/user-attachments/assets/86d8544f-07db-472d-8867-c22c9dbf9d6d" height="80%" width="80%" />
+</p>
+<br />
+<p>Inside Windows Firewall, click "Windows Defender Firewall Properties", which opens a new page where you need to change the Firewall state from "on" to "off". Do the same for the Private profile and the Public profile as well, then click "OK".</p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 11 26 AM" src="https://github.com/user-attachments/assets/8944327c-2769-4851-8c66-a8a1d17462eb" height="80%" width="80%"/>
+</p>
+<br />
+<p>Now that Firewall settings on dc-1 are disabled, we are going to change the DNS settings on client-1 to point to dc-1's private IP address. To do this, go to dc-1 on Azure and find it's private IP address under the Networking details, and copy that address.</p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 13 33 AM" src="https://github.com/user-attachments/assets/d644da37-e52e-40c4-a99e-315dcc202f0c" height="80%" width="80%"/>
+</p>
+<br />
+<p>Then, travel to client-1 within Azure and into "Network settings" and click on the green interface icon, and right below "IP configurations on the left, click "DNS servers" and it should look like this:</p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 18 44 AM" src="https://github.com/user-attachments/assets/84882f3a-5186-416f-9bf5-382655588443" height="80%" width="80%"/>
+</p>
+<p>Right now, the DNS server preference is set to "Inheret from virtual network", but we are going to choose "custom" and paste dc-1's private IP address and click "Save" at the top. Now, client-1's DNS server points to dc-1's domain.</p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 23 47 AM" src="https://github.com/user-attachments/assets/4faaa8e3-8c7c-487b-acdc-275d4b940931" height="80%" width="80%" />
+</p>
+<br />
+<p>In order for this change to be fully made, we need to restart the client-1 virtual machine before proceeding with the tutorial.</p>
+<br />
+<p>Next, we'll login to client-1 and open up Powershell. We want to ping dc-1's private IP address to see if our last configruation actually worked, so grab dc-1's private IP address from Azure and back in Powershell type "ping [dc-1 private IP address]" and hit enter. This should be what the result looks like:  </p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 36 04 AM" src="https://github.com/user-attachments/assets/55eeed1b-ac1d-4915-9655-c1a2068ae1da" height="80%" width="80%"/>
+</p>
+<br />
+<p>If you got the same result, great! You've correctly configured everything so far. If you're ping command replies with anything else, like "Destination host unreachable" it means that dc-1 and client-1 are in different virtual networks or dc-1's Firewall is blocking ping.</p>
+<br />
+<p>The last thing we need to do on Powershell is check that the DNS server for client-1 reflects dc-1's private IP addreess. For this, type "ipconfig /all" then hit enter. Scroll down until you find "DNS server" and you should see dc-1's private IP address next to it.</p>
+<p align="center"><img alt="Screenshot 2025-06-25 at 11 40 31 AM" src="https://github.com/user-attachments/assets/bbe59583-4b10-4fe4-a064-8b26bca14191" height="80%" width="80%"/>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
