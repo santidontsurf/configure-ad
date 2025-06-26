@@ -92,7 +92,9 @@ In this case
 <p>The last thing we need to do on Powershell is check that the DNS server for client-1 reflects dc-1's private IP addreess. For this, type "ipconfig /all" then hit enter. Scroll down until you find "DNS server" and you should see dc-1's private IP address next to it.</p>
 <p align="center"><img alt="Screenshot 2025-06-25 at 11 40 31 AM" src="https://github.com/user-attachments/assets/bbe59583-4b10-4fe4-a064-8b26bca14191" height="80%" width="80%"/>
 </p>
-
+<br />
+<h2>Deploying Active Directory</h2>
+<p>Now we'll download Active Directory do dc-1. Go back to the dc-1 virtual machine and</p>
 
 
 
