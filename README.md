@@ -94,7 +94,51 @@ In this case
 </p>
 <br />
 <h2>Deploying Active Directory</h2>
-<p>Now we'll download Active Directory do dc-1. Go back to the dc-1 virtual machine and</p>
+<p>Now we'll download Active Directory Domain Services in the domain controller. Go back to the dc-1 virtual machine and open up Server Manager if it's not already open. Inside, click on "Add roles and features" and hit next on the new page until you reach "Server Roles". In here, make sure that you check "Active Directory Domain Services" at the top of the list and click "Add Feature" on the pop-up page. Continue until you reach "Confirmation".</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 02 37 AM" src="https://github.com/user-attachments/assets/f4d34e87-148e-4c71-b422-696da9575289" height="80%" width="80%" />
+</p>
+<br />
+<p>In the Confirmation page, make sure that "Restart the destination server automatically if required" is checked then click "Install" at the bottom. Once installed you can close the tab.</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 04 36 AM" src="https://github.com/user-attachments/assets/f60818e1-c420-4b68-9d08-c316a698f992" height="80%" width="80%"/>
+</p>
+<br />
+<p>So far, we've been configuring dc-1 as a domain controller without actually promoting it to a domain controller which is what we'll do next. In Server Manager at the top-right corner there's  a flag icon, click on it, then click "Promote this server to a domain controller".</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 09 59 AM" src="https://github.com/user-attachments/assets/6b2dfc80-f84d-41b9-b3de-16c733b02c7c"  height="80%" width="80%"/>
+</p>
+<br />
+<p>In Deployment Configuration, choose "Add a new forest" and type "mydomain.com" in the bar, then hit next.</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 11 53 AM" src="https://github.com/user-attachments/assets/dab6856e-66f5-48e1-a966-efdc79ac2d50" height="80%" width="80%"/>
+</p>
+<br />
+<p>In Domain Controller Options you'll be asked to set a password for your domain controller, make sure it's a password you can easily remember. Click "Next" and in DNS Options, make suer that "Create DNS delegations" is unchecked. Hit "Next" on the remaining tabs until you reach "Prerequisites Check" and if everything is configured correctly, hit "Install" at the bottom.</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 19 22 AM" src="https://github.com/user-attachments/assets/360bd485-4246-402d-aa24-70b62cd67515" height="80%" width="80%"/>
+</p>
+<br />
+<p>You'll be automatically logged out of the virtual machine after dc-1 is promoted to domain controller, and now that dc-1 no longer a regular virtual machine, to log back into it you need to specify if you're login in as a domain user or a local user. We want to login as a domain user now, so we need to add "mydomain.com/" to our username like this:</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 31 19 AM" src="https://github.com/user-attachments/assets/10c52976-a7f3-4802-a329-b7e13e6724d7" height="80%" width="80%"/>
+</p>
+<br />
+<p>Once we're in dc-1, we're going to create a domain admin user within our domain to be used for our administrative tasks. To do this, type "Active Directory Users and Computers" in the search bar and open it. Inside AD, right-click on "mydomain.com" on the left and go to "New" and click "Organizational Unit". Name this unit "_EMPLOYEES" then hit "Ok". Repeat this steps for a second organizational unit and call it "_ADMINS".</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 40 28 AM" src="https://github.com/user-attachments/assets/c7de6c10-8961-4ada-b070-59c142a59e8a" height="80%" width="80%"/>
+</p>
+<br />
+<p>Now that we have an organizational unit for our admins, we're going to create our first admin account. Right-click "_ADMINS" and go to "New" then click "User". Name the admin "Jane Doe" and her username "jane_admin".</p>
+<p align="center"><img alt="Screenshot 2025-06-26 at 11 45 37 AM" src="https://github.com/user-attachments/assets/dff54b9b-96c2-4b43-b90a-f9429cbbaf6b" height="80%" width="80%"/>
+</p>
+<br />
+<p>Click "Next" and for her password choose something you'll easily remember, and for the sake of this tutorial, make sure "User must change password at next login" is unchecked. Click "Next", then "Finish", and now we have our first admin account in our domain.</p>
+<br />
+<p>This account </p>
+
+
+
+
+
+
+
+
+
+
 
 
 
