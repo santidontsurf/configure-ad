@@ -126,9 +126,31 @@ In this case
 <p align="center"><img alt="Screenshot 2025-06-26 at 11 45 37 AM" src="https://github.com/user-attachments/assets/dff54b9b-96c2-4b43-b90a-f9429cbbaf6b" height="80%" width="80%"/>
 </p>
 <br />
-<p>Click "Next" and for her password choose something you'll easily remember, and for the sake of this tutorial, make sure "User must change password at next login" is unchecked. Click "Next", then "Finish", and now we have our first admin account in our domain.</p>
+<p>Click "Next" and for her password choose something you'll easily remember, and for the sake of this tutorial, make sure "User must change password at next login" is unchecked. Click "Next", then "Finish", and now we have our first account in our domain.</p>
 <br />
-<p>This account </p>
+<p>We're going to add Jane Doe to the "Domain Admins" Security Group. Right-click on Jane Doe and click on "Properties". Inside Properties choose the "Member of" tab at the top, then click "Add". Here, we'll type "domain admins" in the text box and click "Check Names". If the name is correctly checked it will be underlined, you can hit "Ok" and "Apply". Now Jane_admin is a true domain administrator.</p>
+<p align="center"><img alt="Screenshot 2025-06-27 at 11 07 26 AM" src="https://github.com/user-attachments/assets/2f452655-5b9f-46c4-af61-e92c45e28f8d" height="80%" width="80%"/>
+</p>
+<br />
+<p>Now, we're going to join client-1 to the domain we created in dc-1. First, logout of dc-1 and log back in as "mydomain.com\jane_admin" and login to client-1 with the username and password you created for it inside of Azure. Inside client-1, right-click the start buttom(Windows icon) and choose "System" then "Domain or workgroup". Choose "Change", and here we'll be able to change the domain client-1 belongs to. Under "Member of" choose "Domain" and type "mydomain.com",</p>
+<p align="center"><img alt="Screenshot 2025-06-27 at 11 20 31 AM" src="https://github.com/user-attachments/assets/bee0ea47-a6a6-41fd-a864-3b19a4dca1cd" height="80%" width="80%"/>
+</p>
+<br />
+<p>Then, click "Ok" and as soon as you do so a new tab should open up. Because we changed the DNS server settting of client-1 to use dc-1's private IP address, it's able to find mydomain.com. Here, since we only have created our Jane_admin user, we'll login as Jane_admin.</p>
+<p align="center"><img alt="Screenshot 2025-06-27 at 11 26 52 AM" src="https://github.com/user-attachments/assets/74c12e21-afe6-4776-b326-55508d287a7f" height="80%" width="80%"/>
+</p>
+<br />
+<p>Once we click "Ok" the a new tab will welcome us to mydomain.com and the computer will restart. We'll be going to back to working on dc-1 for a moment so don't log back into client-1 yet.</p>
+<br />
+<p>For now, we'll go back do dc-1 and check that client-1 has been added to our domain. Open up Active Directory Users and Computers and open mydomain.com then click "Computers". You should see client-1 in there.</p>
+<p align="center"><img alt="Screenshot 2025-06-27 at 11 41 24 AM" src="https://github.com/user-attachments/assets/54d03ea5-c55d-47d2-b26d-955168cdb95a" height="80%" width="80%"/>
+</p>
+<br />
+<p>Now, let's create a new organizational unit. Right-click mydomain.com and go to New then Organizational Unit. We'll call it "_CLIENTS". Go back to Computers and drag client-1 into the _CLIENTS OU, say yes to whatever pop-up tab appears.</p>
+
+
+
+
 
 
 
