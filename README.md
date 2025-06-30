@@ -147,8 +147,18 @@ In this case
 </p>
 <br />
 <p>Now, let's create a new organizational unit. Right-click mydomain.com and go to New then Organizational Unit. We'll call it "_CLIENTS". Go back to Computers and drag client-1 into the _CLIENTS OU, say yes to whatever pop-up tab appears.</p>
-
-
+<br />
+<p>We have now successfully deployed Active Directory in our domain.</p>
+<h2>Creating users with Powershell</h2>
+<br />
+<p>First, we're going to allow our domain users to remotely access our client-1 virtual machine. login to client-1 as "mydomain.com\jane_admin" and right-click the start menu to click System. Inside, scroll down until you see Remote Desktop, then click it and go to "Remote Desktop Users". A new tab should pop up and we're to click Add. Inside the text box write "Domain Users" and click Check names then Ok. And Ok one last time to close the first pop-up tab.</p>
+<p align="center"><img alt="Screenshot 2025-06-30 at 11 17 00 AM" src="https://github.com/user-attachments/assets/2d6e23cc-72ba-46d8-98e9-76d29f5e55a1" height="80%" width="80%"/>
+</p>
+<br />
+<p>Now, we're to login to dc-1 as "mydomain.com\jane_admin". Search up Powershell, right click it, and choose "Run as an administrator".</p>
+<br />
+<p>With Powershell now open, we're going to use a script provided by Josh Madakor that allows us to create a large number of users for our domain. Click on the link below to access the script:</p>
+[Script](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1)
 
 
 
