@@ -155,10 +155,14 @@ In this case
 <p align="center"><img alt="Screenshot 2025-06-30 at 11 17 00 AM" src="https://github.com/user-attachments/assets/2d6e23cc-72ba-46d8-98e9-76d29f5e55a1" height="80%" width="80%"/>
 </p>
 <br />
-<p>Now, we're to login to dc-1 as "mydomain.com\jane_admin". Search up Powershell, right click it, and choose "Run as an administrator".</p>
+<p>Now, we're to login to dc-1 as "mydomain.com\jane_admin". Search up Powershell ISE, right click it, and choose "Run as an administrator".</p>
 <br />
-<p>With Powershell now open, we're going to use a script provided by Josh Madakor that allows us to create a large number of users for our domain. Click on the link below to access the script:</p>
-[Script](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1)
+<p>Inside, open an new file by clicking the first icon on the top left that is right under File. Once you do so your page should look like this:</p>
+<p align="center"><img alt="Screenshot 2025-06-30 at 11 36 14 AM" src="https://github.com/user-attachments/assets/ad1683d3-6ef1-40be-a4a2-e327d8e97354" height="80%" width="80%"/>
+</p>
+<br />
+<p>For this part, we're going to user a script created by Josh Madakor that allows us to create a large number of users in Powershell. Click on the link below to access the script.</p>
+  
 
 
 
