@@ -162,6 +162,26 @@ In this case
 </p>
 <br />
 <p>For this part, we're going to user a script created by Josh Madakor that allows us to create a large number of users in Powershell. Click on the link below to access the script.</p>
+<a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">Script</a>
+<p></p>
+<br />
+<p>Copy the script into Powershell and make sure that it's pasted to the top half of the our Powershell tab. The script by default creates 1000 user accounts for our domain, but for this tutorial we don't need this many users, so go to the top of the script where it says "$NUMBER_OF_ACCOUNTS_TO_CREATE = 10000" and change the 10000 to 100, then click run the script at the top or press F5 on your keyboard.</p>
+<p align="center"><img alt="Screenshot 2025-07-01 at 10 37 14 AM" src="https://github.com/user-attachments/assets/6d793c01-2443-41a6-9918-541c853bb8c3" height="80%" width="80%"/>
+</p>
+<br />
+<p>Let's open Active Directory Users and Computers. If everything was done correctly we should be able to see the newly created user accounts inside of our _EMPLOYEES organizational unit.</p>
+<p align="center"><img alt="Screenshot 2025-07-01 at 10 39 13 AM" src="https://github.com/user-attachments/assets/2e781cd1-b565-42b8-850c-a0486cba6d88" height="80%" width="80%"/>
+</p>
+<br />
+<p>Now, let's test one of these accounts by login into client-1 with one of them so pick a random user and login to client-1 as "mydomain.com\username" with the defaults password that the script created for all accounts being: Password1.</p>
+<br />
+<p>Inside client-1, travel to File Explorer and follow this path: This PC -> Windows C-Drive -> Users. Inside the users folder we can see that not only does the newly created user account we just logged into has a folder, but also jane_admin and labuser. This is a sign that we have successfully integrated all these accounts into the same domain.</p>
+<p align="center"><img alt="Screenshot 2025-07-01 at 10 48 48 AM" src="https://github.com/user-attachments/assets/b88a7b4c-2868-40a1-bec3-c773bbd699d4" height="80%" width="80%"/>
+</p>
+<br />
+<h2>Managing Group Policy and Accounts</h2>
+
+
   
 
 
